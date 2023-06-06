@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Likeds</h1>
+
+<div id="likeds">
+  <% @likeds.each do |liked| %>
+    <%= render liked %>
+    <p>
+      <%= link_to "Show this liked", liked %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New liked", new_liked_path %>

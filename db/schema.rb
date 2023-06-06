@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_230909) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_231129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,50 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_230909) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "community_participants", force: :cascade do |t|
+    t.bigint "community_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_community_participants_on_community_id"
+    t.index ["user_id"], name: "index_community_participants_on_user_id"
+  end
+
+  create_table "likeds", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likeds_on_post_id"
+    t.index ["user_id"], name: "index_likeds_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.bigint "community_participant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_participant_id"], name: "index_posts_on_community_participant_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +100,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_230909) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "community_participants", "communities"
+  add_foreign_key "community_participants", "users"
+  add_foreign_key "likeds", "posts"
+  add_foreign_key "likeds", "users"
+  add_foreign_key "posts", "community_participants"
 end

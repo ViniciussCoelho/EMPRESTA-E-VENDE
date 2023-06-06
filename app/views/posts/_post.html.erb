@@ -1,0 +1,22 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= post.description %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= link_to post.image.filename, post.image if post.image.attached? %>
+  </p>
+
+  <p>
+    <strong>Community participant:</strong>
+    <%= post.community_participant_id %>
+  </p>
+
+</div>
