@@ -1,0 +1,17 @@
+= form_with(model: liked) do |form|
+  - if liked.errors.any?
+    %div{:style => "color: red"}
+      %h2
+        = pluralize(liked.errors.count, "error")
+        prohibited this liked from being saved:
+      %ul
+        - liked.errors.each do |error|
+          %li= error.full_message
+  %div
+    = form.label :post_id, style: "display: block"
+    = form.text_field :post_id
+  %div
+    = form.label :user_id, style: "display: block"
+    = form.text_field :user_id
+  %div
+    = form.submit

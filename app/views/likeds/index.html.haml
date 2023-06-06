@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+%h1 Likeds
+#likeds
+  - @likeds.each do |liked|
+    = render liked
+    %p
+      = link_to "Show this liked", liked
+= link_to "New liked", new_liked_path

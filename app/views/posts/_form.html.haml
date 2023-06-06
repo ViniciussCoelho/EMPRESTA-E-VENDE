@@ -1,0 +1,23 @@
+= form_with(model: post) do |form|
+  - if post.errors.any?
+    %div{:style => "color: red"}
+      %h2
+        = pluralize(post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - post.errors.each do |error|
+          %li= error.full_message
+  %div
+    = form.label :title, style: "display: block"
+    = form.text_area :title
+  %div
+    = form.label :description, style: "display: block"
+    = form.text_area :description
+  %div
+    = form.label :image, style: "display: block"
+    = form.file_field :image
+  %div
+    = form.label :community_participant_id, style: "display: block"
+    = form.text_field :community_participant_id
+  %div
+    = form.submit

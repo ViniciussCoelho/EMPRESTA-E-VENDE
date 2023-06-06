@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+= render @community_participant
+%div
+  = link_to "Edit this community participant", edit_community_participant_path(@community_participant)
+  |
+  \#{link_to "Back to community participants", community_participants_path}
+  
+  \#{button_to "Destroy this community participant", @community_participant, method: :delete}

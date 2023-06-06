@@ -1,0 +1,20 @@
+= form_with(model: community_participant) do |form|
+  - if community_participant.errors.any?
+    %div{:style => "color: red"}
+      %h2
+        = pluralize(community_participant.errors.count, "error")
+        prohibited this community_participant from being saved:
+      %ul
+        - community_participant.errors.each do |error|
+          %li= error.full_message
+  %div
+    = form.label :community_id, style: "display: block"
+    = form.text_field :community_id
+  %div
+    = form.label :user_id, style: "display: block"
+    = form.text_field :user_id
+  %div
+    = form.label :role, style: "display: block"
+    = form.number_field :role
+  %div
+    = form.submit

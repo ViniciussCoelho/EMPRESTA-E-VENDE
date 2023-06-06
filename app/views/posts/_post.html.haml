@@ -1,0 +1,13 @@
+%div{:id => "#{dom_id post}"}
+  %p
+    %strong Title:
+    = post.title
+  %p
+    %strong Description:
+    = post.description
+  %p
+    %strong Image:
+    = link_to post.image.filename, post.image if post.image.attached?
+  %p
+    %strong Community participant:
+    = post.community_participant_id
