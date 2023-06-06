@@ -2,6 +2,6 @@
 = render "form", post: @post
 %br/
 %div
-  = link_to "Show this post", @post
-  |
-  \#{link_to "Back to posts", posts_path}
+  = link_to "Show this post", community_post_path(@community, @post)
+
+  = link_to "Back to posts", community_posts_path(@community)

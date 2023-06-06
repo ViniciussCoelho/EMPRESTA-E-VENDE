@@ -4,5 +4,5 @@
   - @posts.each do |post|
     = render post
     %p
-      = link_to "Show this post", post
+      = link_to "Show this post", community_post_path(@community, post)
 = link_to "New post", new_community_post_path
