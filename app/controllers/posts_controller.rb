@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_community
 
   # GET /posts or /posts.json
   def index
@@ -61,6 +62,10 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_community
+      @community = Community.find(params[:community_id])
     end
 
     # Only allow a list of trusted parameters through.
