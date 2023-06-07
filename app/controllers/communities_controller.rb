@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: %i[ show edit update destroy ]
+  before_action :set_community_participant, only: %i[ show edit update destroy ]
 
   # GET /communities or /communities.json
   def index
@@ -62,6 +63,10 @@ class CommunitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_community
       @community = Community.find(params[:id])
+    end
+
+    def set_community_participant
+      @community_participant = CommunityParticipant.where(community_id: params[:community_id], user_id: current_user.id).first
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_community
+  before_action :set_community_participant
 
   # GET /posts or /posts.json
   def index
@@ -68,8 +69,12 @@ class PostsController < ApplicationController
       @community = Community.find(params[:community_id])
     end
 
+    def set_community_participant
+      @community_participant = CommunityParticipant.where(community_id: params[:community_id], user_id: current_user.id).first
+    end
+
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :image, :community_participant_id)
+      params.require(:post).permit(:title, :description, :image)
     end
 end
