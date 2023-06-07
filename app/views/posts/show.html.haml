@@ -6,3 +6,5 @@
   = link_to "Back to posts", community_posts_path(@community)
   
   = button_to "Destroy this post", community_post_path(@community, @post), method: :delete
+
+  = link_to "Ver comentários", community_post_comments_path(@community, @post)

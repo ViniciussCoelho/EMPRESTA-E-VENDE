@@ -1,8 +1,8 @@
 %p{:style => "color: green"}= notice
 = render @comment
 %div
-  = link_to "Edit this comment", edit_comment_path(@comment)
-  |
-  \#{link_to "Back to comments", comments_path}
+  = link_to "Edit this comment", edit_community_post_comment_path(@community, @post, @comment)
   
-  \#{button_to "Destroy this comment", @comment, method: :delete}
+  = link_to "Back to comments", community_post_comments_path(@community, @post)
+  
+  = button_to "Destroy this comment", community_post_comment_path(@community, @post, @comment), method: :delete
