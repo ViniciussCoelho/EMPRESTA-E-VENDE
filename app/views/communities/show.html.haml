@@ -4,8 +4,9 @@
   = link_to "Editar comunidade", edit_community_path(@community)
 
   = link_to "Voltar para comunidade", communities_path
-  = link_to "Ver posts", community_posts_path(@community)
-  = link_to "Ver participantes", community_community_participants_path(@community)
+  = link_to "Ver posts", community_posts_path(@community) if @community_participant.present?
+
+  = link_to 'Entrar na comunidade', new_community_community_participant_path(@community) unless @community_participant.present?
 
   
   = button_to "Destruir comunidade", @community, method: :delete

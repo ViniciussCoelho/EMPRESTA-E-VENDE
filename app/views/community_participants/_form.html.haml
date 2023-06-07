@@ -8,13 +8,4 @@
         - community_participant.errors.each do |error|
           %li= error.full_message
   %div
-    = form.label :community_id, style: "display: block"
-    = form.text_field :community_id
-  %div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
-  %div
-    = form.label :role, style: "display: block"
-    = form.number_field :role
-  %div
-    = form.submit
+    = form.submit 'Entrar na comunidade'

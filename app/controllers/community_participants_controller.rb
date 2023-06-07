@@ -70,6 +70,8 @@ class CommunityParticipantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_participant_params
-      params.require(:community_participant).permit(:community_id, :user_id, :role)
+      default_params = { community_id: @community, user_id: current_user.id, role: 0 }
+      params.permit(:community_id, :user_id, :role).reverse_merge(default_params)
     end
+    
 end

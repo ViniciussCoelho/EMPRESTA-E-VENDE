@@ -8,12 +8,6 @@
         - comment.errors.each do |error|
           %li= error.full_message
   %div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
-  %div
-    = form.label :post_id, style: "display: block"
-    = form.text_field :post_id
-  %div
     = form.label :description, style: "display: block"
     = form.text_area :description
   %div
