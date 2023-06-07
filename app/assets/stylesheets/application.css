@@ -26,6 +26,8 @@ body {
 
 }
 
+/* navbar */
+
 nav {
   display: flex;
   width: 100%;
@@ -44,4 +46,99 @@ nav {
   width: 3rem;
   border-radius: 50%;
   margin-right: 1rem;
+}
+
+/* tabs dashboard */
+
+.dashboard {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.lists .title {
+  margin-bottom: 1rem;
+}
+
+
+
+.tabs-row {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-bottom: 4px solid #133E3B;
+  transition: all .15s;
+  cursor: pointer;
+
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.tab:hover {
+  border-bottom: 4px solid #3ABAB2;
+}
+
+.my-communities {
+  margin: 3rem 2rem;
+}
+
+.my-liked-ads {
+  margin: 0 2rem;
+}
+
+/* cards */
+
+.card {
+  background: rgba(217, 217, 217, 0.45);
+  border-radius: 20px;
+  display: flex;
+  padding: 1rem;
+  max-height: 10rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.card-content p {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+
+.card-image img {
+  width: 8rem;
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+
+.cards-list > .card {
+  margin-bottom: 1rem;
 }
