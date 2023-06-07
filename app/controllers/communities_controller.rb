@@ -66,7 +66,8 @@ class CommunitiesController < ApplicationController
     end
 
     def set_community_participant
-      @community_participant = CommunityParticipant.where(community_id: params[:community_id], user_id: current_user.id).first
+      logger.debug "#{current_user.id} #{params[:community_id]}"
+      @community_participant = CommunityParticipant.where(community_id: params[:id], user_id: current_user.id).first
     end
 
     # Only allow a list of trusted parameters through.
