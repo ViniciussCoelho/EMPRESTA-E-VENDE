@@ -2,6 +2,6 @@
 = render "form", community_participant: @community_participant
 %br/
 %div
-  = link_to "Show this community participant", @community_participant
+  = link_to "Show this community participant", community_community_participant_path(@community, @community_participant)
   |
-  \#{link_to "Back to community participants", community_participants_path}
+  \#{link_to "Back to community participants", community_community_participants_path(@community)} 

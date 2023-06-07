@@ -3,6 +3,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities or /communities.json
   def index
+    logger.debug "#{current_user}"
     @communities = Community.all
   end
 
