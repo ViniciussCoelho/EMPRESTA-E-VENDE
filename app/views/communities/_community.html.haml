@@ -1,7 +1,7 @@
 %div{:id => "#{dom_id community}"}
   %p
-    %strong Name:
+    %strong Nome:
     = community.name
   %p
-    %strong Image:
+    %strong Imagem:
     = link_to community.image.filename, community.image if community.image.attached?
