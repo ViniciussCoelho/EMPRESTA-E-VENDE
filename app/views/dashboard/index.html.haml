@@ -1,0 +1,28 @@
+%ul.tabs
+  .dashboard
+    .tabs-row
+      %h1.tab.active
+        = link_to "Meu espaço", my_contents_path, class: "nav-link", data: {"turbo-frame": :"tab_content"}
+      %h1.tab
+        = link_to "Encontrar comunidades", find_communities_path, class: "nav-link", data: {"turbo-frame": :"tab_content"}
+
+= turbo_frame_tag "tab_content", src: my_contents_path
+
+:javascript
+  document.addEventListener("turbo:load", function() {
+    const tabs = document.querySelectorAll(".tabs .tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        tab.classList.add("active");
+
+        tabContents.forEach((tabContent) =>
+          tabContent.classList.remove("active")
+        );
+        tabContents[index].classList.add("active");
+      });
+    });
+  });
+```
