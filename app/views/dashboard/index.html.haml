@@ -1,51 +1,28 @@
-.dashboard
-  .tabs-row
-    %h1.tab
-      = t('Meu espaço')
-    %h1.tab
-      = t('Encontrar comunidades')
-  .lists
-    .my-communities
-      %h2.title
-        = t('Minhas comunidades')
-      .cards-list
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-    .my-liked-ads
-      %h2.title
-        = t('Anúncios favoritados')
-      .cards-list
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
+%ul.tabs
+  .dashboard
+    .tabs-row
+      %h1.tab.active
+        = link_to "Meu espaço", my_contents_path, class: "nav-link", data: {"turbo-frame": :"tab_content"}
+      %h1.tab
+        = link_to "Encontrar comunidades", find_communities_path, class: "nav-link", data: {"turbo-frame": :"tab_content"}
+
+= turbo_frame_tag "tab_content", src: my_contents_path
+
+:javascript
+  document.addEventListener("turbo:load", function() {
+    const tabs = document.querySelectorAll(".tabs .tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        tab.classList.add("active");
+
+        tabContents.forEach((tabContent) =>
+          tabContent.classList.remove("active")
+        );
+        tabContents[index].classList.add("active");
+      });
+    });
+  });
+```

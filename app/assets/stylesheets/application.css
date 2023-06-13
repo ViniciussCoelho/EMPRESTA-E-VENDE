@@ -96,6 +96,10 @@ nav {
   border-bottom: 4px solid #3ABAB2;
 }
 
+.tab.active {
+  border-bottom: 4px solid #3ABAB2;
+}
+
 .my-communities {
   margin: 3rem 2rem;
 }
