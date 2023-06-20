@@ -23,17 +23,7 @@ class LikedsController < ApplicationController
 
   # POST /likeds or /likeds.json
   def create
-    @liked = Liked.new(liked_params)
-
-    respond_to do |format|
-      if @liked.save
-        format.html { redirect_to community_post_likeds_url(@community, @post, @liked), notice: "Adicionado como favorito" }
-        format.json { render :show, status: :created, location: @liked }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @liked.errors, status: :unprocessable_entity }
-      end
-    end
+    @liked = Liked.create(liked_params)
   end
 
   # PATCH/PUT /likeds/1 or /likeds/1.json
