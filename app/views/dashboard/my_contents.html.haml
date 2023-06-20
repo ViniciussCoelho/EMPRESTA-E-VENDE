@@ -4,43 +4,27 @@
       %h2.title
         = t('Minhas comunidades')
       .cards-list
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
+        - if @my_communities.blank?
+          %p= 'Você ainda não faz parte de nenhuma comunidade'
+        - else
+          - @my_communities.each do |community|
+            .card
+              .card-image
+                = image_tag resource_image(community)
+              .card-content
+                %h3= community.name
+                %p= "Total de membros: #{community&.community_participants&.count.to_i}"
     .my-liked-ads
       %h2.title
         = t('Anúncios favoritados')
       .cards-list
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
-        .card
-          .card-image
-            = image_tag 'community_default.png'
-          .card-content
-            %h3= 'Comunidade legal udesc cct'
-            %p= 'Total de membros: 0'
+        - if @my_liked_ads.blank?
+          %p= 'Você ainda não favoritou nenhum anúncio'
+        - else
+          - @my_liked_ads.each do |ad|
+            .card
+              .card-image
+                = image_tag resource_image(ad.post)
+              .card-content
+                %h3= ad.post.title
+                %p= ad.post.description
