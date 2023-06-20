@@ -2,4 +2,4 @@
   %nav
     = image_tag "logo.svg", class: "logo"
     = link_to 'Comunidades', communities_path, class: 'community-nav-link'
-    = image_tag "pfp.jpg", class: "pfp"
+    = link_to (image_tag "pfp.jpg", class: "pfp"), edit_user_registration_path
