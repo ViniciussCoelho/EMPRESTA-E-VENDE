@@ -142,7 +142,6 @@ nav {
   display: flex;
   padding: 1rem;
   max-height: 10rem;
-  cursor: pointer;
   transition: all .15s;
 }
 
@@ -254,6 +253,18 @@ nav {
   border-bottom: 3px solid #3ABAB2;
 }
 
+.logo-nav {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  min-width: 1.70rem;
+  min-height: 1.70rem;
+  width: 1.70rem;
+  margin-right: 1rem;
+}
+
 .button {
   border: none;
   background: #267C76;
@@ -309,17 +320,5 @@ nav {
 .big-pfp {
   width: 10rem;
   border-radius: 50%;
-  margin-right: 1rem;
-}
-
-.logo-nav {
-  display: flex;
-  align-items: center;
-}
-
-.arrow {
-  min-width: 1.70rem;
-  min-height: 1.70rem;
-  width: 1.70rem;
   margin-right: 1rem;
 }
