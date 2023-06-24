@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @back_path = community_path(@community)
   end
 
   # GET /posts/new

@@ -1,7 +1,9 @@
 %header
   %nav
-    = image_tag "logo.svg", class: "logo"
-    = link_to 'Comunidades', communities_path, class: 'community-nav-link'
+    .logo-nav
+      - if @back_path
+        = link_to image_tag("arrow-left.svg", class: "arrow"), @back_path
+      = link_to image_tag("logo.svg", class: "logo"), root_path
     .user-nav
-      = link_to 'Sair', destroy_user_session_path, method: :delete, class: 'logout'
+      = link_to image_tag("exit.svg", class: 'logout'), destroy_user_session_path, method: :delete
       = link_to(image_tag("pfp.jpg"), edit_registration_path(current_user), class: 'pfp')

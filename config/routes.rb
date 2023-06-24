@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :community_participants
   end
 
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/my_contents', to: 'dashboard#my_contents', as: 'my_contents'
