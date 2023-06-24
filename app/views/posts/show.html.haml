@@ -1,6 +1,35 @@
-%p{:style => "color: green"}= notice
-= render @post
-%div
-  
-
-  = button_to "Adicionar como favorito", community_post_likeds_path(@community, @post), method: :post, remote: true
+.lists
+  .my-communities
+    .data-card
+      .post-header
+        .post-header-info
+          .user-info
+            = image_tag resource_image(current_user), class: "medium-pfp"
+            %h2.name
+              = current_user.full_name
+        .post-buttons
+          = button_to community_post_likeds_path(@community, @post), class: "like-btn", method: :post, remote: true, disabled: current_user.liked?(@post) do
+            %span Favoritar
+            = image_tag("star.svg", class: "star-icon")
+          = link_to image_tag("pencil.svg", class: "pencil-edit", style: "margin-left: 1rem"), edit_community_post_path(@community, @post)
+      .post-title
+        %h2
+          = @post.title
+      .post-content
+        = @post.description
+      .post-images
+        = image_tag @post.image
+    #comments{"data-controller" => "turbo-stream"}
+      = turbo_stream_from @post, :comments
+      - @post.comments.each do |comment|
+        .data-card.comment
+          .user-info
+            = image_tag resource_image(comment.user), class: "medium-pfp"
+            %h2.name
+              = comment.user.full_name
+          .comment-content
+            = comment.description
+    .add-comment.field
+      = form_for [@community, @post, @comment], id: "new_comment", method: :post, remote: true do |f|
+        = f.text_area :description, class: "input", placeholder: "Adicione um comentário", id: "comment_description"
+        = f.submit "Enviar", class: "button comment-button", id: "comment_submit"
