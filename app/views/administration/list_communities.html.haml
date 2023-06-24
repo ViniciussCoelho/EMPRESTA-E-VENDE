@@ -1,0 +1,16 @@
+= turbo_frame_tag "tab_content" do
+  .lists
+    .my-communities
+      %h2.title
+        = 'Comunidades'
+      .cards-list
+        - if @communities.blank?
+          %p= 'Atualmente não existem comunidades no sistema.'
+        - else
+          - @communities.each do |community|
+            .card
+              .card-image
+                = image_tag resource_image(community)
+              .card-content
+                %h3= community.name
+                %p= "Total de membros: #{community&.community_participants&.count.to_i}"
