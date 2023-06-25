@@ -18,7 +18,8 @@
       .post-content
         = @post.description
       .post-images
-        = image_tag @post.image
+        - @post.images.each do |image|
+          = image_tag image
     #comments{"data-controller" => "turbo-stream"}
       = turbo_stream_from @post, :comments
       - @post.comments.each do |comment|
@@ -32,4 +33,4 @@
     .add-comment.field
       = form_for [@community, @post, @comment], id: "new_comment", method: :post, remote: true do |f|
         = f.text_area :description, class: "input", placeholder: "Adicione um comentário", id: "comment_description"
-        = f.submit "Enviar", class: "button comment-button", id: "comment_submit"
+        = f.submit "Enviar", class: "button medium-button", id: "comment_submit"

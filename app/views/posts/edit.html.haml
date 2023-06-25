@@ -3,4 +3,4 @@
     .data-card
       %h1 Editar anúncio
       = render "form", post: @post
-      = link_to "Show this post", community_post_path(@community, @post)
+      = link_to "Voltar", community_post_path(@community, @post), class: "button small-button"
