@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :community_participants
   end
 
+  get 'administration', to: 'administration#index'
+  get 'administration/communities', to: 'administration#list_communities'
+  get 'administration/admins', to: 'administration#list_admins'
+  patch 'administration/admins/remove_admin', to: 'administration#remove_admin_permissions'
+
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end

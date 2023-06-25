@@ -1,0 +1,21 @@
+= turbo_frame_tag "tab_content" do
+    .lists
+        .my-communities
+            %h2.title
+                = 'Administradores'
+            - if @admins.blank?
+                %p= 'Atualmente não existem administradores no sistema.'
+            - else
+                %table{:class => "admins-table", :border => 1}
+                    %tr
+                        %th{:style => "width: 80%"}
+                            Email
+                        %th
+                            Ações
+
+                    - @admins.each do |admin|
+                        %tr
+                            %td
+                                = admin.email
+                            %td{:class => "admins-actions"}
+                                = button_to "Remover permissões", "administration/admins/remove_admin", method: :patch, params: {admin_id: admin.id}, class: "remove_permissions-button"
