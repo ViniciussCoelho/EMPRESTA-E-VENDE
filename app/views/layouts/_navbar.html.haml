@@ -6,4 +6,4 @@
       = link_to image_tag("logo.svg", class: "logo"), root_path
     .user-nav
       = button_to image_tag("exit.svg", class: 'logout'), destroy_user_session_path, method: :delete
-      = link_to(image_tag("pfp.jpg"), edit_registration_path(current_user), class: 'pfp')
+      = link_to image_tag(resource_image(current_user), class: 'pfp'), edit_registration_path(current_user)

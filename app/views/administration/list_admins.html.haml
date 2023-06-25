@@ -10,7 +10,7 @@
                 = form_with(url: "administration/admins/give_admin", method: :patch, local: true) do |form|
                     %div
                         = form.text_field :email, placeholder: "Email do usuário"
-                        = form.submit "Adicionar", class: "button-primary"
+                        = form.submit "Adicionar", class: "button medium-button"
 
             - if @admins.blank?
                 %p= 'Atualmente não existem administradores no sistema.'
