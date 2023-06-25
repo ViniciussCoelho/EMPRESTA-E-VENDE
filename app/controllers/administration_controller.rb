@@ -13,6 +13,20 @@ class AdministrationController < ApplicationController
         @admins = User.where(is_admin: true)
     end
 
+    def add_modder_to_community
+        user_email = params[:email]
+        user = User.where(email: user_email).first
+        raise StandardError, "Usuário não encontrado" unless user.present?
+
+        community_id = params[:community_id]
+        community = Community.where(id: community_id).first
+        raise StandardError, "Comunidade não encontrada" unless community.present?
+
+        CommunityModder.create(user_id: user.id, community_id: community_id)
+
+        redirect_to administration_path
+    end
+
     def give_admin_permissions
         user_email = params[:email]
         user = User.where(email: user_email).first
