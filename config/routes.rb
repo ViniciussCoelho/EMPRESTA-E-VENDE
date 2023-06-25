@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'administration', to: 'administration#index'
   get 'administration/communities', to: 'administration#list_communities'
   get 'administration/admins', to: 'administration#list_admins'
+  patch 'administration/admins/give_admin', to: 'administration#give_admin_permissions'
   patch 'administration/admins/remove_admin', to: 'administration#remove_admin_permissions'
 
   devise_for :users do

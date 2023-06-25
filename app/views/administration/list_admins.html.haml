@@ -3,6 +3,15 @@
         .my-communities
             %h2.title
                 = 'Administradores'
+                
+            %div{:style => "margin-bottom: 2rem"}
+                %h4.title
+                    = 'Adicionar administrador'
+                = form_with(url: "administration/admins/give_admin", method: :patch, local: true) do |form|
+                    %div
+                        = form.text_field :email, placeholder: "Email do usuário"
+                        = form.submit "Adicionar", class: "button-primary"
+
             - if @admins.blank?
                 %p= 'Atualmente não existem administradores no sistema.'
             - else

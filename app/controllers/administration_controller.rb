@@ -13,14 +13,25 @@ class AdministrationController < ApplicationController
         @admins = User.where(is_admin: true)
     end
 
+    def give_admin_permissions
+        user_email = params[:email]
+        user = User.where(email: user_email).first
+        raise StandardError, "Usuário não existe" unless user.present?
+
+        user.update(is_admin: true)
+
+        redirect_to administration_path
+    end
+
     def remove_admin_permissions
-        byebug
         admin_id = params[:admin_id]
         admin = User.where(id: admin_id).first
         # byebug arrumar erro (coloca uma exceção personalizada)
         raise StandardError, "Administrador não existe" unless admin.present?
 
         admin.update(is_admin: false)
+
+        redirect_to administration_path
     end
 
     private
