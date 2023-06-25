@@ -10,6 +10,12 @@
     = javascript_importmap_tags
   %body
     %main
+
       - if current_user.present?
         = render "layouts/navbar"
+        - flash.each do |type, msg|
+          .alert.alert-info
+            = msg
       = yield
+
+

@@ -5,7 +5,7 @@ services:
   rails:
     build: .
     command: bash -c "bundle install && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    container_name: crud-market-stock
+    container_name: empresta-e-vende
     stdin_open: true
     tty: true
     ports:
@@ -15,7 +15,7 @@ services:
     environment: 
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=crud-market-stock_development
+      - POSTGRES_DB=empresta-e-vende_development
       - POSTGRES_HOST=db
       - REDIS_URL=redis://redis:6379/0
     depends_on:
@@ -25,7 +25,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=crud-market-stock_development
+      - POSTGRES_DB=empresta-e-vende_development
 
 
   
@@ -37,9 +37,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: crud-market-stock
-      POSTGRES_PASSWORD: crud-market-stock
-      POSTGRES_DB: crud-market-stock_development
+      POSTGRES_USER: empresta-e-vende
+      POSTGRES_PASSWORD: empresta-e-vende
+      POSTGRES_DB: empresta-e-vende_development
 
   redis:
     mem_limit: 1Gb

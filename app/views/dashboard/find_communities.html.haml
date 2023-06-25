@@ -8,11 +8,14 @@
           %p= 'Não encontramos nenhuma comunidade em que você possa participar'
         - else
           - @communities.each do |community|
-            .card
+            .card{class: "community#{community.id}"}
               .card-image
                 = image_tag resource_image(community)
               .card-content
                 %h3= community.name
                 %p= "Total de membros: #{community&.community_participants&.count.to_i}"
                 %br
-                = button_to 'Participar', community_community_participants_path(community_id: community.id, user_id: current_user.id), {class: "button-primary"}
+                = form_tag community_community_participants_path(community_id: community.id, user_id: current_user.id), method: :post, data: { turbo: false } do
+                  = submit_tag 'Participar'
+
+
