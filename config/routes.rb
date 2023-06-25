@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'administration', to: 'administration#index'
   get 'administration/communities', to: 'administration#list_communities'
+  patch 'administration/community/add_modder', to: 'administration#add_modder_to_community'
   get 'administration/admins', to: 'administration#list_admins'
   patch 'administration/admins/give_admin', to: 'administration#give_admin_permissions'
   patch 'administration/admins/remove_admin', to: 'administration#remove_admin_permissions'

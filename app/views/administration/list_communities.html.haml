@@ -30,5 +30,21 @@
               .card-image
                 = image_tag resource_image(community)
               .card-content
-                %h3= community.name
-                %p= "Total de membros: #{community&.community_participants&.count.to_i}"
+                %div
+                  %h3= community.name
+                  %p= "Total de membros: #{community&.community_participants&.count.to_i}"
+              %div
+                %p
+                  Adicionar moderador
+                = form_with(url: "administration/community/add_modder", method: :patch, local: true) do |form|
+                  %div
+                    = form.text_field :email, placeholder: "Email do usuário"
+                    = form.hidden_field :community_id, :value => community.id
+                    = form.submit "Adicionar", class: "button-primary"
+              %div{:style => "display: flex; flex-direction: column;"}
+                %p
+                  Moderadores
+                %ul
+                  - community.users.each do |modder|
+                    %li
+                      = modder.email
