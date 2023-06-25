@@ -26,7 +26,7 @@ class CommunityParticipantsController < ApplicationController
 
     respond_to do |format|
       if @community_participant.save
-        format.html { redirect_to community_community_participant_url(@community, @community_participant), notice: "Community participant was successfully created." }
+        format.html { redirect_to community_path(@community)}
         format.json { render :show, status: :created, location: @community_participant }
       else
         format.html { render :new, status: :unprocessable_entity }
