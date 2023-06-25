@@ -16,7 +16,7 @@ Esse projeto é um CRUD básico para um trabalho da faculdade. Ele é feito em R
 * Obs: guia de instalação para o Linux, altamente recomendado executar o app no LINUX.
 
 * Primeiro de tudo, será necessário instalar o git, docker e docker-compose.
-  * Obs: Existe a opção de baixar o programa como zip e extrair também, mas deve-se atentar ao nome da pasta onde se encontra os arquivos, que deve ser exatamente "crud-market-stock" como é o nome do repositório. O nome precisa estar assim para o docker funcionar corretamente.
+  * Obs: Existe a opção de baixar o programa como zip e extrair também, mas deve-se atentar ao nome da pasta onde se encontra os arquivos, que deve ser exatamente "empresta-e-vende" como é o nome do repositório. O nome precisa estar assim para o docker funcionar corretamente.
   * Git:
     1. Abra um terminal e digite: `sudo apt-get update`
     2. Depois de executado, digite o comando: `sudo apt-get install git`
@@ -46,8 +46,8 @@ Esse projeto é um CRUD básico para um trabalho da faculdade. Ele é feito em R
   2. Caso existe um processo nessa porta, digite: `sudo kill 'PID do processo'"` para elimina-lo. No meu caso por exemplo, sudo kill '1509'
 
 * Agora seguiremos com a execução da aplicação:
-  1. Caso vá utilizar o git para baixar o projeto abra um terminal onde quer que o projeto fique e digite: `git clone https://github.com/ViniciussCoelho/crud-market-stock.git`
-  2. Acesse a pasta do projeto: `cd crud-market-stock/` (repetindo, muito importante que o nome da pasta do projeto seja esse para o docker encontra-la)
+  1. Caso vá utilizar o git para baixar o projeto abra um terminal onde quer que o projeto fique e digite: `git clone https://github.com/ViniciussCoelho/empresta-e-vende.git`
+  2. Acesse a pasta do projeto: `cd empresta-e-vende/` (repetindo, muito importante que o nome da pasta do projeto seja esse para o docker encontra-la)
   3. Digite `sudo make docker para montar o container` (nessa parte pode ocorrer o erro de conflito do postgres que citei acima nas observações, basta seguir os passos e voltar para cá).
   4. Após o container ser montado completamente (os passos executados serão mostrados no terminal), mantenha a aba aberta, e abra uma nova aba no terminal (ainda dentro da pasta do projeto).
   5. Nessa nova aba, digite `sudo make bash` para acessarmos o terminal dentro do container
@@ -57,7 +57,7 @@ Esse projeto é um CRUD básico para um trabalho da faculdade. Ele é feito em R
   * Obs: Caso o servidor não suba sozinho, derrube o docker ao apertar CTRL + C no primeiro terminal que abrimos, e suba com o mesmo comando, `sudo docker-compose up`**
   
   * Obs 2: O rails cria e popula o banco de dados para gente com os comandos `rails db:create`, `rails db:migrate`, `rails db:seed` que usamos anteriormente. Dessa forma, não há necessidade de utilizar o dump. Mas caso queira, pode pular os comandos de criação do banco e rodar o dump no docker com o seguinte comando:
-  1. Dentro da pasta do app e com o docker rodando em outra aba, execute o comando `sudo cat dump_db.sql | docker exec -i crud-market-stock_db_1 psql -U postgres`.
+  1. Dentro da pasta do app e com o docker rodando em outra aba, execute o comando `sudo cat dump_db.sql | docker exec -i empresta-e-vende_db_1 psql -U postgres`.
   
   Pronto! O app está em pé e rodando!
    
