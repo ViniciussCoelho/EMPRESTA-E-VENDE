@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :community_participants
   end
 
+  put '/users/:id/update', to: 'users#update', as: 'update_user'
+
   get 'administration', to: 'administration#index'
   get 'administration/communities', to: 'administration#list_communities'
   patch 'administration/community/add_modder', to: 'administration#add_modder_to_community'
@@ -16,8 +18,12 @@ Rails.application.routes.draw do
   patch 'administration/admins/give_admin', to: 'administration#give_admin_permissions'
   patch 'administration/admins/remove_admin', to: 'administration#remove_admin_permissions'
 
-  devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+  devise_for :users, controllers: {
+    passwords: 'passwords'
+  }
+  
+  devise_scope :user do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
   end
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
