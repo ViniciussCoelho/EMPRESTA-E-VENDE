@@ -52,6 +52,11 @@ nav {
   align-items: center;
 }
 
+.user-nav button {
+  border: none;
+  background: transparent;
+}
+
 .logout {
   width: 2rem;
   margin-right: 1rem;
@@ -83,9 +88,9 @@ nav {
   margin-bottom: 1rem;
 }
 
-
-
-
+#comment_description {
+  margin-bottom: 1rem;
+}
 
 .tabs-row {
   display: flex;

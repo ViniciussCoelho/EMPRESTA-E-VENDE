@@ -11,14 +11,14 @@
     .field
       = form.label "Título"
       %br/
-      = form.text_area :title, class: "input"
+      = form.text_area :title, class: "input", required: true
     .field
       = form.label "Descrição"
       %br/
-      = form.text_area :description, class: "input"
+      = form.text_area :description, class: "input", required: true
     .field
       = form.label "Imagens"
       %br/
-      = form.file_field :images, multiple: true
+      = form.file_field :images, multiple: true, style: "margin-top: 1rem"
     .actions
       = form.submit "Enviar", class: "button medium-button"

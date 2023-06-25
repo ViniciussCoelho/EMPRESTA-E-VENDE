@@ -24,7 +24,10 @@
           - @my_liked_ads.each do |ad|
             .card{onclick: "window.location='#{community_post_path(ad.community, ad.post)}'"}
               .card-image
-                = image_tag resource_image(ad.post)
+                - if ad.post.images.attached?
+                  = image_tag ad.post.images.first
+                - else
+                  = image_tag "post_default.png"
               .card-content
                 %h3= ad.post.title
                 %p= ad.post.description

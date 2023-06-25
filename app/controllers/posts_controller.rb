@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     @community = Community.find(params[:community_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @liked = Liked.find_by(post_id: @post.id, user_id: @community_participant.user.id) || Liked.new
     @back_path = community_path(@community)
   end
 
@@ -42,7 +43,6 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    byebug
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to community_post_url(@community, @post), notice: "Post was successfully updated." }

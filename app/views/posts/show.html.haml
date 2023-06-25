@@ -8,10 +8,16 @@
             %h2.name
               = current_user.full_name
         .post-buttons
-          = button_to community_post_likeds_path(@community, @post), class: "like-btn", method: :post, remote: true, disabled: current_user.liked?(@post) do
-            %span Favoritar
-            = image_tag("star.svg", class: "star-icon")
-          = link_to image_tag("pencil.svg", class: "pencil-edit", style: "margin-left: 1rem"), edit_community_post_path(@community, @post)
+          - if !current_user.liked?(@post)
+            = button_to community_post_likeds_path(@community, @post), class: "like-btn", method: :post, remote: true do
+              %span Favoritar
+              = image_tag("star.svg", class: "star-icon")
+          - else
+            = button_to community_post_liked_path(@community, @post, @liked), class: "like-btn", method: :delete, remote: true do
+              %span Desfavoritar
+              = image_tag("star.svg", class: "star-icon")
+          - if current_user == @post.community_participant.user
+            = link_to image_tag("pencil.svg", class: "pencil-edit", style: "margin-left: 1rem"), edit_community_post_path(@community, @post)
       .post-title
         %h2
           = @post.title
@@ -20,8 +26,7 @@
       .post-images
         - @post.images.each do |image|
           = image_tag image
-    #comments{"data-controller" => "turbo-stream"}
-      = turbo_stream_from @post, :comments
+    #comments
       - @post.comments.each do |comment|
         .data-card.comment
           .user-info
