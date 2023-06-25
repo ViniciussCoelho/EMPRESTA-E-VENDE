@@ -1,5 +1,6 @@
-%h1 New post
-= render "form", post: @post
-%br/
-%div
-  = link_to "Back to posts", community_posts_path(@community)
+.lists
+  .my-communities
+    .data-card
+      %h1{style: "margin-bottom: 1.5rem;"} Criar anúncio
+      = render "form", post: @post
+      = link_to "Voltar", community_path(@community), class: "button small-button"

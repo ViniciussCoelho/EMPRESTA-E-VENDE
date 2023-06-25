@@ -9,16 +9,16 @@
           %li= error.full_message
   %div
     .field
-      = form.label :title
+      = form.label "Título"
       %br/
-      = form.text_area :title, class: "input"
+      = form.text_area :title, class: "input", required: true
     .field
-      = form.label :description
+      = form.label "Descrição"
       %br/
-      = form.text_area :description, class: "input"
+      = form.text_area :description, class: "input", required: true
     .field
-      = form.label :image
+      = form.label "Imagens"
       %br/
-      = form.file_field :image, class: "input"
+      = form.file_field :images, multiple: true, style: "margin-top: 1rem"
     .actions
-      = form.submit "Enviar", class: "button comment-button"
+      = form.submit "Enviar", class: "button medium-button"

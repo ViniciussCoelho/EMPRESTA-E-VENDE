@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :communities do
     resources :posts do
-      resource :likeds
+      resources :likeds
       resources :comments
     end
     resources :community_participants

@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     @community = Community.find(params[:community_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @liked = Liked.find_by(post_id: @post.id, user_id: @community_participant.user.id) || Liked.new
     @back_path = community_path(@community)
   end
 
@@ -79,6 +80,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :image).merge(community_participant_id: @community_participant.id)
+      params.require(:post).permit(:title, :description, images: []).merge(community_participant_id: @community_participant.id)
     end
 end

@@ -24,6 +24,12 @@ class LikedsController < ApplicationController
   # POST /likeds or /likeds.json
   def create
     @liked = Liked.create(liked_params)
+
+    respond_to do |format|
+      if @liked.save
+        format.json { render :show, location: @post }
+      end
+    end
   end
 
   # PATCH/PUT /likeds/1 or /likeds/1.json
@@ -44,8 +50,7 @@ class LikedsController < ApplicationController
     @liked.destroy
 
     respond_to do |format|
-      format.html { redirect_to community_post_likeds_url(@community, @post), notice: "Liked was successfully destroyed." }
-      format.json { head :no_content }
+      format.json { render :show, location: @post }
     end
   end
 
