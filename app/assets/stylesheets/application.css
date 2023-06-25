@@ -53,9 +53,8 @@ nav {
 }
 
 .logout {
+  width: 2rem;
   margin-right: 1rem;
-  text-decoration: none;
-  color: #f54e4e;
 }
 
 .pfp img {
@@ -75,7 +74,7 @@ nav {
 .lists {
   display: flex;
   flex-direction: column;
-
+  word-wrap: break-word;
   width: 100%;
   height: 100%;
 }
@@ -144,6 +143,7 @@ nav {
   padding: 1rem;
   max-height: 10rem;
   transition: all .15s;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -254,6 +254,18 @@ nav {
   border-bottom: 3px solid #3ABAB2;
 }
 
+.logo-nav {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  min-width: 1.70rem;
+  min-height: 1.70rem;
+  width: 1.70rem;
+  margin-right: 1rem;
+}
+
 .button {
   border: none;
   background: #267C76;
@@ -295,7 +307,64 @@ nav {
   color: red;
 }
 
-/* user data */
+.big-pfp {
+  width: 10rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.medium-pfp {
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.post-header {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.post-header-info {
+  display: flex;
+}
+
+.post-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.post-content {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.post-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-images img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #267C76;
+}
 
 .data-card {
   display: flex;
@@ -306,23 +375,77 @@ nav {
   margin-bottom: 1.5rem;
 }
 
-.big-pfp {
-  width: 10rem;
-  border-radius: 50%;
-  margin-right: 1rem;
+.btns{
+  position: absolute;
+  top: 216px;
+  left: 328px;
+  display: flex;
 }
 
-.feed-button {
-  background-color: #3abab2;
-  border-width: 0;
-  border-radius: 3px;
-  color: white;
-  padding: 7px;
-  transition: 100ms;
+.btn{
+  background: transparent;
+  border: none;
+  margin: 87px;
+  font-size: 88px;
+  outline: none;
+  color: grey;
 }
 
-.feed-button:hover {
-  background-color: #1ad8cb;
+.btn i:hover{
   cursor: pointer;
-  padding: 9px;
+}
+
+.like-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  color: white;
+  background: #3ABAB2;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.like-btn:hover{
+  background: #267C76;
+}
+
+.like-btn:disabled {
+  background: grey;
+}
+
+.add-comment {
+  margin-top: 5rem;
+}
+
+.comment {
+  flex-direction: row;
+}
+
+.comment-button {
+  width: 15rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+
+}
+
+.star-icon {
+  margin-left: 0.25rem;
+  width: 1rem;
+}
+
+.comment-content {
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+  font-weight: 500;
+}
+
+.pencil-edit {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.post-buttons {
+  display: flex;
 }

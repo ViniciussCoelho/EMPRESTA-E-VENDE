@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get 'administration/admins', to: 'administration#list_admins'
   patch 'administration/admins/remove_admin', to: 'administration#remove_admin_permissions'
 
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
   get 'dashboard/my_contents', to: 'dashboard#my_contents', as: 'my_contents'

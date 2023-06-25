@@ -10,6 +10,10 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @community = Community.find(params[:community_id])
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @back_path = community_path(@community)
   end
 
   # GET /posts/new

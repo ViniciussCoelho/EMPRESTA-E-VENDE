@@ -8,7 +8,7 @@
           %p= 'Você ainda não faz parte de nenhuma comunidade'
         - else
           - @my_communities.each do |community|
-            .card
+            .card{onclick: "window.location='#{community_path(community)}'"}
               .card-image
                 = image_tag resource_image(community)
               .card-content
@@ -22,7 +22,7 @@
           %p= 'Você ainda não favoritou nenhum anúncio'
         - else
           - @my_liked_ads.each do |ad|
-            .card
+            .card{onclick: "window.location='#{community_post_path(ad.community, ad.post)}'"}
               .card-image
                 = image_tag resource_image(ad.post)
               .card-content
