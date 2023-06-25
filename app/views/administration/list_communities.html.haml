@@ -14,10 +14,9 @@
               = form.text_field :name, :class => "input"
             %h2
               = form.label :image, "Imagem:"
-            %h2
               = form.file_field :image
             %h2
-              = form.submit "Adicionar", class: "button-primary"
+              = form.submit "Criar comunidade", class: "button-primary"
       .cards-list
         - if @communities.blank?
           %p= 'Atualmente não existem comunidades no sistema.'
