@@ -1,9 +1,6 @@
-%h1 Editing post
-= render "form", post: @post
-%br/
-%div
-  = link_to "Show this post", community_post_path(@community, @post)
-
-  = link_to "Back to posts", community_posts_path(@community)
-
-  = link_to "Ver comentários", community_post_comments_path(@community, @post)
+.lists
+  .my-communities
+    .data-card
+      %h1 Editar anúncio
+      = render "form", post: @post
+      = link_to "Show this post", community_post_path(@community, @post)

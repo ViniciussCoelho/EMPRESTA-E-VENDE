@@ -8,13 +8,17 @@
         - post.errors.each do |error|
           %li= error.full_message
   %div
-    = form.label :title, style: "display: block"
-    = form.text_area :title
-  %div
-    = form.label :description, style: "display: block"
-    = form.text_area :description
-  %div
-    = form.label :image, style: "display: block"
-    = form.file_field :image
-  %div
-    = form.submit
+    .field
+      = form.label :title
+      %br/
+      = form.text_area :title, class: "input"
+    .field
+      = form.label :description
+      %br/
+      = form.text_area :description, class: "input"
+    .field
+      = form.label :image
+      %br/
+      = form.file_field :image, class: "input"
+    .actions
+      = form.submit "Enviar", class: "button comment-button"

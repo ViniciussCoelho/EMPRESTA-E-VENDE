@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :likeds
   has_one_attached :image
 
+  validates :first_name, :last_name, :email, :password, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
