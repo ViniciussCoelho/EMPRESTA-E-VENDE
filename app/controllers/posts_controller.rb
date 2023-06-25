@@ -20,10 +20,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @back_path = community_path(@community)
   end
 
   # GET /posts/1/edit
   def edit
+    @back_path = community_post_path(@community, @post)
   end
 
   # POST /posts or /posts.json
