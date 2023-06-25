@@ -287,6 +287,17 @@ nav {
   margin-bottom: 1rem;
 }
 
+.button-primary {
+  border-radius: 3px;
+  padding: 0px 5px;
+  transition: 100ms;
+}
+
+.button-primary:hover {
+  background: #d6d6d6;
+  cursor: pointer;
+}
+
 .register {
   text-decoration: none;
   color: #000000;
@@ -448,4 +459,35 @@ nav {
 
 .post-buttons {
   display: flex;
+}
+
+/* admin section */
+.admins-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.admins-table th {
+  background-color: #3ABAB2;
+}
+
+.admins-table th, td {
+  padding: 7px;
+}
+
+.admins-table tr:nth-child(even) {
+  background: rgba(217, 217, 217, 0.45);
+}
+
+.remove_permissions-button {
+  background: red;
+  border-radius: 5px;
+  border-width: 0;
+  padding: 0 6px;
+  transition: 100ms;
+}
+
+.remove_permissions-button:hover {
+  background: rgb(223, 0, 0);
+  cursor: pointer;
 }
