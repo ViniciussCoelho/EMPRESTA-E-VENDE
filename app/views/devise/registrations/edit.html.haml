@@ -1,21 +1,41 @@
 .lists
   .my-communities
     .data-card
-      = image_tag "pfp.jpg", class: "big-pfp"
-      %h2
-        = "Nome"
-      %h2
-        = "Sobrenome"
-      %h2
-        = "Email"
-      %h2
-        = "Instituição de ensino"
-      %button
-        = "salvar"
-    .data-card
-      %h2
-        = "Senha atual"
-      %h2
-        = "Nova senha"
-      %h2
-        = "Confirmação de senha"
+      = form_for current_user, url: update_user_path(current_user.id), method: :put do |f|
+        %h2
+          = f.label :first_name, "Nome"
+        %h2
+          = f.text_field :first_name, value: current_user.first_name
+        %h2
+          = f.label :last_name, "Sobrenome"
+        %h2
+          = f.text_field :last_name, value: current_user.last_name
+        %h2
+          = f.label :email, "Email"
+        %h2 
+          = f.email_field :email, value: current_user.email
+        %h2
+          = f.label :image, "Imagem do usuário"
+        %h2
+          = image_tag resource_image(current_user), class: "big-pfp"
+        %h2
+          = f.file_field :image, class: "input"
+        %h2
+          = f.email_field :email, value: current_user.email, disabled: true
+        %h2
+          = f.submit "Salvar"
+
+    - if resource.present?
+      .data-card
+        = form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :put }) do |f|
+          %h2
+            = f.label :password, "Nova senha"
+          %h2
+            = f.password_field :password
+          %h2
+            = f.label :password_confirmation, "Confirmação de senha"
+          %h2 
+            = f.password_field :password_confirmation
+          %h2
+            = f.submit "Salvar"
+
