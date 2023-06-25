@@ -29,7 +29,7 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to community_url(@community), notice: "Community was successfully created." }
+        format.html { redirect_to administration_communities_path}
         format.json { render :show, status: :created, location: @community }
       else
         format.html { render :new, status: :unprocessable_entity }
