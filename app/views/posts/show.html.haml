@@ -37,7 +37,7 @@
             = comment.description
           - if current_user.is_admin || CommunityModder.where(user_id: current_user.id, community_id: @community.id).first.present?
             %div
-              = button_to "delete", {:controller => :comments, :action => 'destroy', :community_id => @community.id, :post_id => @post.id }, :method => :delete
+              = button_to "delete", {:controller => :comments, :action => 'destroy', :community_id => @community.id, :post_id => @post.id, id: comment.id }, :method => :delete
     .add-comment.field
       = form_for [@community, @post, @comment], id: "new_comment", method: :post, remote: true do |f|
         = f.text_area :description, class: "input", placeholder: "Adicione um comentário", id: "comment_description"
