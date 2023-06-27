@@ -482,3 +482,23 @@ nav {
   display: flex;
   flex-direction: column;
 }
+
+.admins-table {
+  border-collapse: collapse;
+}
+
+.admins-table th {
+  background: #3ABAB2;
+}
+
+.admins-table th, td {
+  padding: 5px 15px;
+}
+
+.admins-table tr:nth-child(odd) {
+  background: rgba(209, 209, 209, 0.315);
+}
+
+.admins-table tr:nth-child(even) {
+  background: rgb(209, 209, 209);
+}

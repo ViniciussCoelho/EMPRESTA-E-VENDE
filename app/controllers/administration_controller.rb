@@ -40,7 +40,6 @@ class AdministrationController < ApplicationController
     def remove_admin_permissions
         admin_id = params[:admin_id]
         admin = User.where(id: admin_id).first
-        # byebug arrumar erro (coloca uma exceção personalizada)
         raise StandardError, "Administrador não existe" unless admin.present?
 
         admin.update(is_admin: false)
@@ -51,7 +50,6 @@ class AdministrationController < ApplicationController
     private
 
     def is_admin?
-        # byebug arrumar erro (coloca uma exceção personalizada)
-        raise StandardError, "aaaaaaaaaaaaaaaaa to com depressão" unless current_user.is_admin
+        redirect_to root_path unless current_user.is_admin
     end
 end

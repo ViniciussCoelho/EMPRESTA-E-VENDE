@@ -27,4 +27,4 @@
                             %td
                                 = admin.email
                             %td{:class => "admins-actions"}
-                                = button_to "Remover permissões", "administration/admins/remove_admin", method: :patch, params: {admin_id: admin.id}, class: "remove_permissions-button"
+                                = button_to "Remover permissões", "administration/admins/remove_admin", method: :patch, params: {admin_id: admin.id}, form: {data: {turbo_confirm: "Tem certeza que deseja remover as permissões deste administrador?"}}, class: "remove_permissions-button"
